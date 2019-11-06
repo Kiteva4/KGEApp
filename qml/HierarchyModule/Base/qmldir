@@ -1,0 +1,3 @@
+module Base
+BaseTreeView 1.0 BaseTreeView.qml
+BaseTreeItem 1.0 BaseTreeItem.qml

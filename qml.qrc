@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qml/ComponentsViewModule/Base/qmldir</file>
+        <file>qml/ComponentsViewModule/Impl/qmldir</file>
+        <file>qml/ComponentsViewModule/qmldir</file>
+        <file>qml/HierarchyModule/Base/qmldir</file>
+        <file>qml/HierarchyModule/Impl/qmldir</file>
+        <file>qml/HierarchyModule/qmldir</file>
+        <file>qml/HierarchyModule/Base/BaseTreeView.qml</file>
+        <file>qml/HierarchyModule/Base/BaseTreeItem.qml</file>
+        <file>qml/HierarchyModule/Impl/HierarchyView.qml</file>
+        <file>qml/HierarchyModule/Impl/TreeItemDelegate.qml</file>
+    </qresource>
+</RCC>
