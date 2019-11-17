@@ -5,8 +5,6 @@
 #include <QTreeView>
 #include "TreeModelTest.h"
 
-#include "TreeModelTest.h"
-
 class TreeView : public QTreeView
 {
 public:

@@ -1,2 +1,3 @@
 module Impl
 HierarchyView 1.0 HierarchyView.qml
+TreeItemDelegate 1.0 TreeItemDelegate.qml

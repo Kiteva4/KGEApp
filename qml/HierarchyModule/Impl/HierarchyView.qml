@@ -3,13 +3,15 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 1.5
 import QtQuick.Controls.Styles 1.4
 import QtQml.Models 2.12
-//import HierarchyModule.Base 1.0
+import HierarchyModule.Base 1.0
 
 
-TreeView {
+ BaseTreeView {
     id: _myTreeView
     anchors.fill: parent
     model: _myTreeModel
+
+    mouser.drag.active: true
 
     TableViewColumn {
         id: _tableViewColumn
