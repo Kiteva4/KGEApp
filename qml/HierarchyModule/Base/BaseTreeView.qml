@@ -10,7 +10,7 @@ BasicTableView {
     property var model: null
     property alias rootIndex: modelAdaptor.rootIndex
 
-    property alias mouser: mouseArea
+//    property alias mouser: mouseArea
 
     readonly property var currentIndex: modelAdaptor.mapRowToModelIndex(__currentRow)
     property ItemSelectionModel selection: null
@@ -136,12 +136,12 @@ BasicTableView {
                     var selectRowRange = (drag && (selectionMode === SelectionMode.MultiSelection
                                                    || (selectionMode === SelectionMode.ExtendedSelection
                                                        && modifiers & Qt.ControlModifier)))
-                                         || modifiers & Qt.ShiftModifier
+                            || modifiers & Qt.ShiftModifier
                     var itemSelection = !selectRowRange || clickedIndex === modelIndex ? modelIndex
-                                        : modelAdaptor.selectionForRowRange(clickedIndex, modelIndex)
+                                                                                       : modelAdaptor.selectionForRowRange(clickedIndex, modelIndex)
 
                     if (selectionMode === SelectionMode.MultiSelection
-                        || selectionMode === SelectionMode.ExtendedSelection && modifiers & Qt.ControlModifier) {
+                            || selectionMode === SelectionMode.ExtendedSelection && modifiers & Qt.ControlModifier) {
                         if (drag)
                             selection.select(itemSelection, ItemSelectionModel.ToggleCurrent)
                         else
@@ -182,8 +182,8 @@ BasicTableView {
             }
 
             return row === currentRow
-                   && (selectionMode === SelectionMode.SingleSelection
-                       || (selectionMode > SelectionMode.SingleSelection && !selection))
+                    && (selectionMode === SelectionMode.SingleSelection
+                        || (selectionMode > SelectionMode.SingleSelection && !selection))
         }
 
         function branchDecorationContains(x, y) {
@@ -209,12 +209,12 @@ BasicTableView {
             selectOnRelease = false
             __listView.forceActiveFocus()
             if (pressedRow === -1
-                || Settings.hasTouchScreen
-                || branchDecorationContains(mouse.x, mouse.y)) {
+                    || Settings.hasTouchScreen
+                    || branchDecorationContains(mouse.x, mouse.y)) {
                 return
             }
             if (selectionMode === SelectionMode.ExtendedSelection
-                && selection.isSelected(pressedIndex)) {
+                    && selection.isSelected(pressedIndex)) {
                 selectOnRelease = true
                 return
             }
@@ -362,7 +362,7 @@ BasicTableView {
             __listView.scrollIfNeeded(event.key)
 
             if (event.key === Qt.Key_A && event.modifiers & Qt.ControlModifier
-                && !!selection && selectionMode > SelectionMode.SingleSelection) {
+                    && !!selection && selectionMode > SelectionMode.SingleSelection) {
                 var sel = modelAdaptor.selectionForRowRange(0, __listView.count - 1)
                 selection.select(sel, ItemSelectionModel.SelectCurrent)
             } else if (event.key === Qt.Key_Shift) {

@@ -11,7 +11,7 @@ import HierarchyModule.Base 1.0
     anchors.fill: parent
     model: _myTreeModel
 
-    mouser.drag.active: true
+    property int dragItemIndex: -1
 
     TableViewColumn {
         id: _tableViewColumn
@@ -79,8 +79,60 @@ import HierarchyModule.Base 1.0
         }
     }
 
-    itemDelegate: TreeItemDelegate{
+    itemDelegate: Item {
+        id: delegateItem
+        width: _myTreeView.width
+        height: 15
 
+        Rectangle {
+            id: dragRect
+            width: _myTreeView.width
+            height: 15
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            color: "salmon"
+            border.color: Qt.darker(color)
+
+            Text{
+                color: "white"
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+                text: "obj"
+            }
+
+            MouseArea {
+                id: mouseArea
+                anchors.fill: parent
+                drag.target: dragRect
+
+                drag.onActiveChanged: {
+                    if (mouseArea.drag.active) {
+                        _myTreeView.dragItemIndex = index;
+                    }
+                    dragRect.Drag.drop();
+                }
+            }
+
+            states: [
+                State {
+                    when: dragRect.Drag.active
+                    ParentChange {
+                        target: dragRect
+                        parent: root
+                    }
+
+                    AnchorChanges {
+                        target: dragRect
+                        anchors.horizontalCenter: undefined
+                        anchors.verticalCenter: undefined
+                    }
+                }
+            ]
+
+            Drag.active: mouseArea.drag.active
+            Drag.hotSpot.x: dragRect.width / 2
+            Drag.hotSpot.y: dragRect.height / 2
+        }
     }
 
     onDoubleClicked: isExpanded(index) ? collapse(index) : expand(index)

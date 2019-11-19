@@ -1,6 +1,7 @@
 #include "HierarchyForm.h"
 #include "ui_hierarchyform.h"
 #include "TreeModel.h"
+
 HierarchyForm::HierarchyForm(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::HierarchyForm)
